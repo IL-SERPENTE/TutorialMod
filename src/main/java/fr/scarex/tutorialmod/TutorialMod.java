@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -24,16 +25,22 @@ public class TutorialMod
 	 * Logger used for debug
 	 */
 	public static final Logger LOGGER = LogManager.getLogger(NAME);
-
+	
+	@Mod.Instance(MODID)
+	public static TutorialMod INSTANCE;
+	
+	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		TutorialModItems.registerItems();
 		TutorialModBlocks.registerBlocks();
 	}
 
+	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
 		TutorialModItems.registerItemsCrafts();
 		TutorialModBlocks.registerBlocksCrafts();
 	}
 
+	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {}
 }
