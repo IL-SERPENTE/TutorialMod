@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "stutorialmod",
+  "name": "SCAREX Tutorial Mod",
+  "description": "This is a tutorial mod, use it for your mods.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "http://scarex.fr",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["SCAREX"],
+  "credits": "MinecraftForgeFrance",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
