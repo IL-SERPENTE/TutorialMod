@@ -3,6 +3,9 @@ package fr.scarex.tutorialmod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
+import fr.scarex.tutorialmod.client.gui.inventory.GuiBackPack;
+import fr.scarex.tutorialmod.inventory.InventoryBackPack;
+import fr.scarex.tutorialmod.inventory.container.ContainerBackPack;
 
 /**
  * @author SCAREX
@@ -14,7 +17,7 @@ public class CommonProxy implements IGuiHandler
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID) {
 		case 0:
-			return null;
+			return new ContainerBackPack(player.inventory, new InventoryBackPack(player.getHeldItem(), 54));
 		}
 		return null;
 	}
@@ -23,7 +26,7 @@ public class CommonProxy implements IGuiHandler
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID) {
 		case 0:
-			return null;
+			return new GuiBackPack(player.inventory, new InventoryBackPack(player.getHeldItem(), 54));
 		}
 		return null;
 	}
