@@ -1,16 +1,13 @@
 package fr.scarex.tutorialmod.inventory;
 
-import java.util.Arrays;
-
-import fr.scarex.tutorialmod.TutorialMod;
-import fr.scarex.tutorialmod.item.ItemBackPack;
-import scala.collection.immutable.Stack;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
+import fr.scarex.tutorialmod.TutorialMod;
+import fr.scarex.tutorialmod.item.ItemBackPack;
 
 /**
  * @author SCAREX
@@ -20,18 +17,19 @@ public class InventoryBackPack implements IInventory
 {
 	public ItemStack[] content;
 	public int size;
-	
+
 	public InventoryBackPack(ItemStack container, int size) {
 		this.size = size;
 		this.content = new ItemStack[size];
 		if (!container.hasTagCompound()) container.setTagCompound(new NBTTagCompound());
 		this.readFromNBT(container.getTagCompound());
 	}
-	
+
 	/**
 	 * This methods reads the content of the NBTTagCompound inside the container
 	 * 
-	 * @param comp the container NBTTagCompound
+	 * @param comp
+	 *            the container NBTTagCompound
 	 */
 	public void readFromNBT(NBTTagCompound comp) {
 		NBTTagList nbtlist = comp.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
@@ -41,15 +39,16 @@ public class InventoryBackPack implements IInventory
 			this.content[slot] = ItemStack.loadItemStackFromNBT(comp1);
 		}
 	}
-	
+
 	/**
 	 * This methods saves the content inside the container
 	 * 
-	 * @param comp the NBTTagCompound to write in
+	 * @param comp
+	 *            the NBTTagCompound to write in
 	 */
 	public void writeToNBT(NBTTagCompound comp) {
 		NBTTagList nbtlist = new NBTTagList();
-		
+
 		for (int i = 0; i < this.size; i++) {
 			if (this.content[i] != null) {
 				NBTTagCompound comp1 = new NBTTagCompound();

@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -27,14 +26,13 @@ public class TutorialMod
 	 * Logger used for debug
 	 */
 	public static final Logger LOGGER = LogManager.getLogger(NAME);
-	
+
 	@Mod.Instance(MODID)
 	public static TutorialMod INSTANCE;
-	
+
 	@SidedProxy(clientSide = "fr.scarex.tutorialmod.client.ClientProxy", serverSide = "fr.scarex.tutorialmod.CommonProxy")
 	public static CommonProxy PROXY;
-	
-	
+
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		TutorialModItems.registerItems();
@@ -45,7 +43,7 @@ public class TutorialMod
 	public void init(FMLInitializationEvent event) {
 		TutorialModItems.registerItemsCrafts();
 		TutorialModBlocks.registerBlocksCrafts();
-		
+
 		// Registering the gui handler
 		NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, PROXY);
 	}

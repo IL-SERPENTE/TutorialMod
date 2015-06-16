@@ -9,7 +9,7 @@ import net.minecraft.item.Item;
 public class TutorialModItems
 {
 	public static Item ITEM_BACKPACK;
-	
+
 	public static final void registerItems() {
 		ITEM_BACKPACK = new ItemBackPack();
 	}

@@ -1,13 +1,13 @@
 package fr.scarex.tutorialmod.inventory.slot;
 
-import fr.scarex.tutorialmod.item.ItemBackPack;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import fr.scarex.tutorialmod.item.ItemBackPack;
 
 /**
  * @author SCAREX
- *
+ * 
  */
 public class SlotBackPack extends Slot
 {
