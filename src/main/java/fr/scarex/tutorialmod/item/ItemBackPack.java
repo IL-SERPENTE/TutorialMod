@@ -26,22 +26,19 @@ public class ItemBackPack extends Item
 		this.register();
 	}
 
+	/**
+	 * Used to add the item to the game registry
+	 */
 	public final void register() {
 		GameRegistry.registerItem(this, NAME);
 	}
 
+	/**
+	 * Used to open the gui
+	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		player.openGui(TutorialMod.INSTANCE, 0, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 		return stack;
 	}
-
-	/**
-	 * @param stack
-	 *            ItemStack used
-	 * @param held
-	 *            true if the player is holding this item
-	 */
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean held) {}
 }

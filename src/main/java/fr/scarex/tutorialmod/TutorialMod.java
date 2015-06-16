@@ -46,6 +46,7 @@ public class TutorialMod
 		TutorialModItems.registerItemsCrafts();
 		TutorialModBlocks.registerBlocksCrafts();
 		
+		// Registering the gui handler
 		NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, PROXY);
 	}
 

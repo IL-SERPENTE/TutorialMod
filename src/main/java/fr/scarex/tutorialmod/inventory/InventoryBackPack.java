@@ -126,6 +126,9 @@ public class InventoryBackPack implements IInventory
 	@Override
 	public void closeInventory() {}
 
+	/**
+	 * Prevents backpack-ception
+	 */
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		return !(stack.getItem() instanceof ItemBackPack);

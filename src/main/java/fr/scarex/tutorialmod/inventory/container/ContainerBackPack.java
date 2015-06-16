@@ -6,7 +6,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import fr.scarex.tutorialmod.TutorialMod;
 import fr.scarex.tutorialmod.inventory.InventoryBackPack;
 import fr.scarex.tutorialmod.inventory.slot.SlotBackPack;
 import fr.scarex.tutorialmod.item.ItemBackPack;
@@ -18,7 +17,6 @@ import fr.scarex.tutorialmod.item.ItemBackPack;
 public class ContainerBackPack extends Container
 {
 	public InventoryBackPack invBackpack;
-	public boolean needsUpdate;
 	public int rows;
 
 	public ContainerBackPack(InventoryPlayer playerInv, InventoryBackPack inv) {
@@ -28,12 +26,14 @@ public class ContainerBackPack extends Container
 		int j;
 		int k;
 
+		// Adding slots to the backpack
 		for (j = 0; j < this.rows; ++j) {
 			for (k = 0; k < 9; ++k) {
 				this.addSlotToContainer(new SlotBackPack(inv, k + j * 9, 8 + k * 18, 18 + j * 18));
 			}
 		}
 
+		// Adding player's slots
 		for (j = 0; j < 3; ++j) {
 			for (k = 0; k < 9; ++k) {
 				this.addSlotToContainer(new Slot(playerInv, k + j * 9 + 9, 8 + k * 18, 103 + j * 18 + i));
@@ -63,38 +63,41 @@ public class ContainerBackPack extends Container
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
-			
-			// Prevents backpack-ception (backpack inside backpack) with shift-click
+
+			// Prevents backpack-ception (backpack inside backpack) with
+			// shift-click
 			if (itemstack.getItem() instanceof ItemBackPack) return null;
 
 			if (index < this.invBackpack.getSizeInventory()) {
 				if (!this.mergeItemStack(itemstack1, this.invBackpack.getSizeInventory(), this.inventorySlots.size(), true)) return null;
 			} else if (!this.mergeItemStack(itemstack1, 0, this.invBackpack.getSizeInventory(), false)) { return null; }
 
-			if (itemstack1.stackSize == 0) {
+			if (itemstack1.stackSize == 0)
 				slot.putStack((ItemStack) null);
-			} else {
+			else
 				slot.onSlotChanged();
-				this.needsUpdate = true;
-			}
 		}
 
 		return itemstack;
 	}
 
 	/**
-	 * @param buttonPressed left click, right click, wheel click, etc.
-	 * @param flag category (e.g.: hotbar keys)
+	 * @param buttonPressed
+	 *            left click, right click, wheel click, etc.
+	 * @param flag
+	 *            category (e.g.: hotbar keys)
 	 */
 	@Override
 	public ItemStack slotClick(int slotIndex, int buttonPressed, int flag, EntityPlayer player) {
 		// Prevents from removing current backpack
 		if (flag == 2 && buttonPressed == player.inventory.currentItem) return null;
 		if (slotIndex - this.invBackpack.getSizeInventory() - 27 == player.inventory.currentItem) return null;
-		this.needsUpdate = true;
 		return super.slotClick(slotIndex, buttonPressed, flag, player);
 	}
 
+	/**
+	 * Used to save content
+	 */
 	@Override
 	public void onContainerClosed(EntityPlayer player) {
 		this.writeToNBT(player.getHeldItem());

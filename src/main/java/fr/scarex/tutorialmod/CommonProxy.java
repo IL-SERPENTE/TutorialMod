@@ -17,6 +17,7 @@ public class CommonProxy implements IGuiHandler
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID) {
 		case 0:
+			// The last parameter must be a multiple of 9 (e.g: 9, 18, 27, 54)
 			return new ContainerBackPack(player.inventory, new InventoryBackPack(player.getHeldItem(), 54));
 		}
 		return null;
@@ -26,9 +27,9 @@ public class CommonProxy implements IGuiHandler
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID) {
 		case 0:
+			// The last parameter must be a multiple of 9 (e.g: 9, 18, 27, 54)
 			return new GuiBackPack(player.inventory, new InventoryBackPack(player.getHeldItem(), 54));
 		}
 		return null;
 	}
-
 }
