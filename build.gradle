@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0.0"
+version = "1.0.1"
 group= "fr.scarex.tutorialmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "TutorialMod"
 
@@ -26,7 +26,16 @@ minecraft {
     runDir = "eclipse"
 }
 
-dependencies {}
+repositories {
+    maven {
+        name "RX14"
+        url "http://mvn.rx14.co.uk/repo/"
+    }
+}
+
+dependencies {
+    compile name: "InventoryTweaks", group: "inventorytweaks", version: "1.59-dev-3", classifier: "deobf"
+}
 
 processResources
 {

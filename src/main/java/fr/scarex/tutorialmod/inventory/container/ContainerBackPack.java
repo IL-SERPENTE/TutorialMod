@@ -1,5 +1,6 @@
 package fr.scarex.tutorialmod.inventory.container;
 
+import invtweaks.api.container.ChestContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -13,7 +14,11 @@ import fr.scarex.tutorialmod.item.ItemBackPack;
 /**
  * @author SCAREX
  * 
+ * @ChestContainer InventoryTweaks API implementation
+ * <br />
+ * isLargeChest indicates whether the buttons should be placed at the top of the gui or on the right.
  */
+@ChestContainer(isLargeChest = false)
 public class ContainerBackPack extends Container
 {
 	public InventoryBackPack invBackpack;
