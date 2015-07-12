@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-    compile name: "InventoryTweaks", group: "inventorytweaks", version: "1.59-dev-3", classifier: "deobf"
+    // compile name: "InventoryTweaks", group: "inventorytweaks", version: "1.59-dev-3", classifier: "deobf"
 }
 
 processResources
