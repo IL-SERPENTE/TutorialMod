@@ -47,13 +47,13 @@ public class ClientProxy extends CommonProxy
 						try {
 							Desktop.getDesktop().browse(new URI("ts3server://ts.minecraftforgefrance.fr?port=9987"));
 						} catch (Exception e) {
-							TutorialMod.LOGGER.warn("Douldn't open teamspeak", e);
+							TutorialMod.LOGGER.warn("Couldn't open teamspeak", e);
 						}
 					}
 				}
 			});
 
-			ObfuscationReflectionHelper.setPrivateValue(GuiMainMenu.class, (GuiMainMenu) event.gui, "Bienvenue dans ce tutoriel", "splashText");
+			ObfuscationReflectionHelper.setPrivateValue(GuiMainMenu.class, (GuiMainMenu) event.gui, "Bienvenue dans ce tutoriel", "splashText", "field_73975_c");
 		}
 	}
 
