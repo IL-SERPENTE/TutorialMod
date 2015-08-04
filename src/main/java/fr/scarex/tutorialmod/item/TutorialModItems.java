@@ -1,5 +1,7 @@
 package fr.scarex.tutorialmod.item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import fr.scarex.tutorialmod.recipe.BackpackRecipe;
 import net.minecraft.item.Item;
 
 /**
@@ -14,5 +16,7 @@ public class TutorialModItems
 		ITEM_BACKPACK = new ItemBackPack();
 	}
 
-	public static final void registerItemsCrafts() {}
+	public static final void registerItemsCrafts() {
+		GameRegistry.addRecipe(new BackpackRecipe());
+	}
 }
