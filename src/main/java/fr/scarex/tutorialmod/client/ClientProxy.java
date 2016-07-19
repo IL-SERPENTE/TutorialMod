@@ -3,6 +3,7 @@ package fr.scarex.tutorialmod.client;
 import java.awt.Desktop;
 import java.net.URI;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiOptions;
@@ -25,6 +26,10 @@ public class ClientProxy extends CommonProxy
 	public ClientProxy() {
 		// registering the PROXY to use events from MinecraftForge
 		MinecraftForge.EVENT_BUS.register(this);
+		
+		TutorialMod.LOGGER.info(Minecraft.getMinecraft().timer.timerSpeed);
+		TutorialMod.LOGGER.info(Minecraft.theMinecraft);
+		TutorialMod.LOGGER.info(Minecraft.isJvm64bit());
 	}
 
 	/**
