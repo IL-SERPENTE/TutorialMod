@@ -10,7 +10,9 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import fr.scarex.tutorialmod.block.TutorialModBlocks;
+import fr.scarex.tutorialmod.handler.BlockCanFallHandler;
 import fr.scarex.tutorialmod.item.TutorialModItems;
+import net.minecraftforge.common.MinecraftForge;
 
 /**
  * @author SCAREX
@@ -51,5 +53,11 @@ public class TutorialMod
 	}
 
 	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event) {}
+	public void postInit(FMLPostInitializationEvent event) {
+		multiregister(new BlockCanFallHandler());
+	}
+
+	public static void multiregister(Object o) {
+		MinecraftForge.EVENT_BUS.register(o);
+	}
 }
