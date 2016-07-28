@@ -37,6 +37,8 @@ public class TutorialMod
 	public void preInit(FMLPreInitializationEvent event) {
 		TutorialModItems.registerItems();
 		TutorialModBlocks.registerBlocks();
+
+		PROXY.register();
 	}
 
 	@Mod.EventHandler

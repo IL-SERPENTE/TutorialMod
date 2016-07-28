@@ -14,6 +14,8 @@ import fr.scarex.tutorialmod.item.ItemBackPack;
  */
 public class CommonProxy implements IGuiHandler
 {
+	public void register() {}
+	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID) {
